@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patrik Lunch — кафе и ресторан в Обнинске</title>
+  <meta name="description" content="Бронирование столов и доставка блюд Patrik Lunch. Тартар из лосося, сырная тарелка, кофе с собой. Обнинск, ул. Славского, 10.">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="top">
+    <a class="top__logo" href="#">Patrik Lunch</a>
+    <nav class="top__nav" aria-label="Разделы">
+      <a href="#reserve">Бронь</a>
+      <a href="#menu">Меню</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="top__cart" type="button" data-cart-open>
+      Заказ <span data-cart-count>0</span>
+    </button>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1 class="hero__word" aria-label="Patrik Lunch">
+        <span class="hero__patrik">Patrik</span>
+        <span class="hero__lunch">Lunch</span>
+      </h1>
+
+      <div class="hero__doors">
+        <a class="door door--butter" href="#reserve">
+          <span class="door__title">Забронировать стол</span>
+          <span class="door__text">Выберите дату, время и сколько вас будет</span>
+        </a>
+        <a class="door door--navy" href="#menu">
+          <span class="door__title">Заказать домой</span>
+          <span class="door__text">Доставка и самовывоз со Славского, 10</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="checker" aria-hidden="true"></div>
+
+    <section class="intro">
+      <p class="intro__text">
+        Кафе на Славского, 10, куда приходят на обед, остаются на ужин и возвращаются
+        за атмосферой. 4,9 на Яндекс Картах и награда Good place 2026.
+      </p>
+      <figure class="ph intro__ph">
+        <figcaption>
+          <b>Фото:</b> зал Patrik Lunch вечером — тёплый свет, столики у окна,
+          на переднем плане тартар из лосося и бокал.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="reserve" id="reserve">
+      <div class="reserve__head">
+        <h2 class="h2">Бронь стола</h2>
+        <p>Подтвердим бронь звонком в течение 15 минут.</p>
+      </div>
+
+      <form class="reserve__form" data-reserve novalidate>
+        <label class="field">
+          <span>Дата</span>
+          <input type="date" name="date" required data-date>
+        </label>
+        <label class="field">
+          <span>Время</span>
+          <select name="time" required data-time></select>
+        </label>
+        <div class="field">
+          <span>Гостей</span>
+          <div class="guests">
+            <button type="button" data-guests="-1" aria-label="Меньше гостей">−</button>
+            <output name="guests" data-guests-out>2</output>
+            <button type="button" data-guests="1" aria-label="Больше гостей">+</button>
+          </div>
+        </div>
+        <label class="field">
+          <span>Имя</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="field">
+          <span>Телефон</span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+7 ___ ___-__-__" required data-phone>
+        </label>
+        <label class="field field--wide">
+          <span>Пожелания</span>
+          <input type="text" name="comment" placeholder="Например, столик у окна или день рождения">
+        </label>
+
+        <p class="form-error" data-reserve-error role="alert"></p>
+        <button class="btn btn--navy" type="submit">Забронировать стол</button>
+      </form>
+
+      <div class="reserve__done" data-reserve-done hidden>
+        <p class="reserve__done-title">Стол забронирован</p>
+        <p data-reserve-text></p>
+        <button class="btn btn--line" type="button" data-reserve-again>Новая бронь</button>
+      </div>
+    </section>
+
+    <div class="checker checker--small" aria-hidden="true"></div>
+
+    <section class="menu" id="menu">
+      <div class="menu__head">
+        <h2 class="h2">Меню на вынос</h2>
+        <p>Соберите заказ — привезём или приготовим к вашему приходу.</p>
+      </div>
+      <div class="menu__cols" data-menu></div>
+    </section>
+
+    <section class="contacts" id="contacts">
+      <div class="contacts__info">
+        <h2 class="h2">Славского, 10</h2>
+        <p class="contacts__big"><a href="tel:+79956030999">+7 995 603-09-99</a></p>
+        <p><a href="https://t.me/patriklunch" target="_blank" rel="noopener">Telegram-канал Patrik Lunch</a></p>
+        <p class="contacts__hint">Обнинск. Доставка, самовывоз, кофе с собой. Можно с собакой.</p>
+      </div>
+      <div class="contacts__map">
+        <iframe
+          title="Patrik Lunch на карте"
+          src="https://yandex.ru/map-widget/v1/?ll=36.571554%2C55.128671&amp;z=17&amp;pt=36.571554,55.128671,pm2dbm"
+          loading="lazy"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>Patrik Lunch, Обнинск</span>
+    <span>Концепт сайта — Fieldstone Labs, 2026</span>
+  </footer>
+
+  <!-- Корзина -->
+  <div class="overlay" data-cart-close hidden></div>
+  <aside class="cart" aria-label="Заказ" aria-hidden="true" data-cart>
+    <div class="cart__head">
+      <h2 class="cart__title">Заказ</h2>
+      <button class="cart__close" type="button" data-cart-close aria-label="Закрыть">×</button>
+    </div>
+
+    <div class="cart__body" data-cart-body>
+      <ul class="cart__list" data-cart-list></ul>
+      <p class="cart__empty" data-cart-empty>Здесь пока пусто. Добавьте блюда из меню.</p>
+
+      <form class="order" data-order novalidate>
+        <div class="order__total">Итого <b data-cart-total>0 ₽</b></div>
+
+        <div class="switch" role="radiogroup" aria-label="Способ получения">
+          <label><input type="radio" name="mode" value="Доставка" checked><span>Доставка</span></label>
+          <label><input type="radio" name="mode" value="Самовывоз"><span>Самовывоз</span></label>
+        </div>
+
+        <label class="field" data-address>
+          <span>Адрес</span>
+          <input type="text" name="address" autocomplete="street-address" placeholder="Улица, дом, квартира">
+        </label>
+        <label class="field">
+          <span>Имя</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="field">
+          <span>Телефон</span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+7 ___ ___-__-__" required data-phone>
+        </label>
+        <label class="field">
+          <span>Комментарий</span>
+          <input type="text" name="comment" placeholder="Например, приборы на двоих">
+        </label>
+
+        <p class="form-error" data-order-error role="alert"></p>
+        <button class="btn btn--navy btn--wide" type="submit">Отправить заказ</button>
+      </form>
+    </div>
+
+    <div class="cart__done" data-cart-done hidden>
+      <p class="reserve__done-title">Заказ принят</p>
+      <p>Перезвоним, чтобы подтвердить состав и время.</p>
+      <button class="btn btn--line btn--wide" type="button" data-cart-close>Вернуться к меню</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
